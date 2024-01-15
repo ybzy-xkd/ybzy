@@ -8,26 +8,24 @@
 <body>
     <h1>Telegram Video Viewer</h1>
 
-    <!-- Video element to play Telegram video -->
-    <video id="telegramVideo" width="640" height="360" controls>
-        Your browser does not support the video tag.
-    </video>
-
     <script>
-        // Replace 'YOUR_BOT_TOKEN' and 'YOUR_FILE_ID' with actual values
-        const botToken = '6814622439:AAFVUHNj3jEg75M8TkJHVwx7TZvLuRdD9dM';
-        const fileId = 'YOUR_FILE_ID';
+        // 解析链接，提取chat_id和file_id
+        const queryParams = new URLSearchParams(window.location.search);
+        const chatId = queryParams.get('chat_id');
+        const fileId = queryParams.get('file_id');
 
-        // Construct the video URL using Telegram Bot API
-        const videoUrl = `https://api.telegram.org/file/bot${botToken}/${fileId}`;
+        // 使用Telegram Bot API构建视频的URL
+        const videoUrl = `https://api.telegram.org/6814622439:AAFVUHNj3jEg75M8TkJHVwx7TZvLuRdD9dM/getFile?file_id=${fileId}`;
 
-        // Set the video source
-        const videoElement = document.getElementById('telegramVideo');
+        // 创建video元素
+        const videoElement = document.createElement('video');
+        videoElement.width = 640;
+        videoElement.height = 360;
+        videoElement.controls = true;
         videoElement.src = videoUrl;
 
-        // You can also use the 'autoplay' attribute to start playing the video automatically
-        // videoElement.autoplay = true;
+        // 将video元素添加到页面中
+        document.body.appendChild(videoElement);
     </script>
 </body>
 </html>
-
