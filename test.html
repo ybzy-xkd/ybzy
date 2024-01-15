@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Telegram Video Viewer</title>
 </head>
 <body>
-    <div>
-        hello world
-    </div>
+    <h1>Telegram Video Viewer</h1>
+
+    <!-- Video element to play Telegram video -->
+    <video id="telegramVideo" width="640" height="360" controls>
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        // Replace 'YOUR_BOT_TOKEN' and 'YOUR_FILE_ID' with actual values
+        const botToken = '6814622439:AAFVUHNj3jEg75M8TkJHVwx7TZvLuRdD9dM';
+        const fileId = 'YOUR_FILE_ID';
+
+        // Construct the video URL using Telegram Bot API
+        const videoUrl = `https://api.telegram.org/file/bot${botToken}/${fileId}`;
+
+        // Set the video source
+        const videoElement = document.getElementById('telegramVideo');
+        videoElement.src = videoUrl;
+
+        // You can also use the 'autoplay' attribute to start playing the video automatically
+        // videoElement.autoplay = true;
+    </script>
 </body>
-<script>
-
-
-</script>
 </html>
+
